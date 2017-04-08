@@ -44,15 +44,21 @@ public class PanoramaCameraControl : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.touchCount >= 2)
+        if (Input.touchCount > 1)
         {
             if (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved)
             {
                 AdjustFieldOfView();
             }
+            else
+            {
+                fingerPoint1 = new Vector2(0, 0);
+                fingerPoint2 = new Vector2(0, 0);
+            }
         }
         else
         {
+
 #if UNITY_EDITOR
             if (Input.GetMouseButton(0))
 #endif
